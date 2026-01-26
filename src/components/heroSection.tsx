@@ -1,0 +1,37 @@
+import style from  '@/styles/hero.module.css'
+import ActionBtn from './actionBtn';
+import NavBar from './navBar';
+
+type HeroProps = {
+  title: string;
+  subtitle: string;
+  cta: string;
+};
+
+
+
+// export default function Hero({ title, subtitle, cta }: HeroProps) {
+//   return (
+//     <section className="w-full h-screen flex flex-col justify-center items-center">
+//       <h1>{title}</h1>
+//       <p>{subtitle}</p>
+//       <button>{cta}</button>
+//     </section>
+//   );
+// }
+
+export default function Hero() {
+  return (
+    <>
+    <section className={`${style.hero_section}`}>
+      
+      <div className='text-white flex flex-col gap-3 justify-center items-center w-full h-full bg-black/50'>
+        <span className={`${style.secondary} leading-2.5 tracking-wide font-medium text-xl`}>VAT APPROVED</span>
+        <h1 className="md:text-5xl text-2xl text-center">Shaping Future Innovators with <br /> <span className={style.secondary}>Industry Demand Skills</span></h1>
+        <p className='md:text-lg text-sm text-wrap text-center md:w-2/3 w-full'>Transform your career with future-ready programs in technology and innovation.</p>
+        <ActionBtn />
+      </div>
+    </section>
+    </>
+  );
+}
