@@ -33,14 +33,14 @@ export default function Navbar() {
 
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <Image src="/logo.png" alt="Logo" width={48} height={48} />
+          <Image loading="lazy"  src="/Logo.png" alt="Logo" width={48} height={48} />
           <div className="flex flex-col leading-tight">
             <span className={`md:text-lg text-base font-semibold ${textColor}`}>
               Avinya
             </span>
             <span className="md:text-lg text-base font-semibold text-[#cfb070]">
               Techknows
-            </span>
+            </span> 
           </div>
         </div>
 
