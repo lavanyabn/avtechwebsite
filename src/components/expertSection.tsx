@@ -44,12 +44,12 @@ export default function ExpertSection() {
         </h2>
       </div>
       <br />
-      <div className="grid md:grid-cols-3 grid-cols-1 gap-6">
+      <div className="grid md:grid-cols-3 md:px-0 px-4 grid-cols-2 gap-6">
         {items.map((item, index) => (
           <div key={index} className="flex gap-3 cursor-pointer">
-            <div className="flex gap-3 justify-center hover:border-b border-[#8a1c1f] ease-linear duration-500 items-center p-3">
+            <div className="flex gap-3 border rounded-md justify-center  hover:border-b border-[#8a1c1f20] ease-linear duration-500 items-center p-3">
               <FaStarOfLife className="text-[#8a1c1f]" />
-              <span>{item.name}</span>
+              <span className="text-wrap">{item.name}</span>
             </div>
           </div>
         ))}

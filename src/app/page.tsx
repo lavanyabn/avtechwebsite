@@ -7,6 +7,7 @@ import Hero from '@/components/heroSection';
 import MemberSection from '@/components/membersSection';
 import Navbar from '@/components/navBar';
 import SecondSection from '@/components/secondSection';
+import ThingsWeAreGoodAtSlider from '@/components/things';
 // import { fetchGraphQL } from '@/lib/graphql';
 
 // const HOME_QUERY = `
@@ -57,6 +58,10 @@ export default function Home() {
 
       <section id="about">
         <SecondSection />
+      </section>
+
+      <section id="about">
+        <ThingsWeAreGoodAtSlider />
       </section>
 
       <section id="services">

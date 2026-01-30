@@ -1,6 +1,6 @@
 .hero_section {
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,6 +10,8 @@
   background-size: cover;
   overflow-x: hidden;
 }
+
+
 
 .primary {
     color: rgb(138, 28, 31);
