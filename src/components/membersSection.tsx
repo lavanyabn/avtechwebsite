@@ -28,7 +28,7 @@ export default function MemberSection() {
         </h2>
 
         {/* Members */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-4 grid-cols-2 gap-10">
           {members.map((member, index) => (
             <div key={index} className="text-white">
               <h3 className="text-lg font-medium">{member.name}</h3>

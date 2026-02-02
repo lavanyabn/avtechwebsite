@@ -1,5 +1,6 @@
-// const WP_API = process.env.WP_GRAPHQL_URL!;
-const WP_API = 'http://avtech.local/graphql';
+const WP_API = `${process.env.NEXT_PUBLIC_WP_LINK}/graphql`;
+
+console.log('Using WP_API:', WP_API);
 
 export async function fetchGraphQL(query: string) {
   const res = await fetch(WP_API, {

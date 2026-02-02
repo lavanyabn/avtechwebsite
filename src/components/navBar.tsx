@@ -51,11 +51,11 @@ export default function Navbar() {
               Home
             </a>
           </li>
-          <li>
+          {/* <li>
             <Link href="/internship" className={`${textColor} hover:text-[#cfb070]`}>
               Internship
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link href="#services" className={`${textColor} hover:text-[#cfb070]`}>
               Services
@@ -64,6 +64,11 @@ export default function Navbar() {
           <li>
             <a href="#training" className={`${textColor} hover:text-[#cfb070]`}>
               Training
+            </a>
+          </li>
+          <li>
+            <a href="#members" className={`${textColor} hover:text-[#cfb070]`}>
+              Members
             </a>
           </li>
           <li>

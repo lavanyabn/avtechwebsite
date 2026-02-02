@@ -1,34 +1,21 @@
 import style from  '@/styles/hero.module.css'
 import ActionBtn from './actionBtn';
-import NavBar from './navBar';
 
 type HeroProps = {
+  tag: string;
   title: string;
   subtitle: string;
   cta: string;
 };
 
-
-
-// export default function Hero({ title, subtitle, cta }: HeroProps) {
-//   return (
-//     <section className="w-full h-screen flex flex-col justify-center items-center">
-//       <h1>{title}</h1>
-//       <p>{subtitle}</p>
-//       <button>{cta}</button>
-//     </section>
-//   );
-// }
-
-export default function Hero() {
+export default function Hero({title, tag, subtitle, cta} : HeroProps) {
   return (
     <>
-    <section className={`${style.hero_section} md:h-screen h-[65vh]`}>
-      
+    <section className={`${style.hero_section} md:h-screen h-[65vh]`}>     
       <div className='text-white flex flex-col gap-3 justify-center items-center w-full h-full bg-black/50'>
-        <span className={`${style.secondary} leading-2.5 tracking-wide font-medium text-xl`}>VTA APPROVED</span>
-        <h1 className="md:text-5xl text-4xl text-center">Shaping Future Innovators with <br /> <span className={style.secondary}>Industry Demand Skills</span></h1>
-        <p className='text-lg  text-wrap text-center md:w-2/3 w-full md:px-0 px-5'>Transform your career with future-ready programs in technology and innovation.</p>
+        <span className={`${style.secondary} leading-2.5 tracking-wide font-medium text-xl`}>{tag}</span>
+        <h1 className="md:text-5xl text-4xl md:w-2/4 w-full leading-14  text-center nth-last-[1]:text-[#cfb070]">{title}</h1>
+        <p className='text-lg  text-wrap text-center md:w-2/3 w-full md:px-0 px-5'>{subtitle}</p>
         <ActionBtn />
       </div>
     </section>
