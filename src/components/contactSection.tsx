@@ -27,7 +27,5 @@ export default function ContactUs()
     </section>
 )
     }
-  );
-};
 
-export default ContactUs;
+
