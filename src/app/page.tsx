@@ -8,43 +8,43 @@ import MemberSection from '@/components/membersSection';
 import Navbar from '@/components/navBar';
 import SecondSection from '@/components/secondSection';
 import ThingsWeAreGoodAtSlider from '@/components/things';
-// import { fetchGraphQL } from '@/lib/graphql';
+import { fetchGraphQL } from '@/lib/graphql';
 
-// const HOME_QUERY = `
-//   query {
-//     pageBy(uri: "home") {
-//       heroSection {
-//         mainTag
-//         heroTitle
-//         heroShortDescription
-//         primaryButton
-//       }
-//     }
-//   }
-// `;
+const HOME_QUERY = `
+  query {
+    pageBy(uri: "home") {
+      heroSection {
+        mainTag
+        heroTitle
+        heroShortDescription
+        primaryButton
+      }
+    }
+  }
+`;
 
-export default function Home() {
+export default async function Home() {
 
-  //   const data = await fetchGraphQL(HOME_QUERY);
+    const data = await fetchGraphQL(HOME_QUERY);
 
-  // if (!data?.pageBy?.heroSection) {
-  //   throw new Error('Home page data not found');
-  // }
+  if (!data?.pageBy?.heroSection) {
+    throw new Error('Home page data not found');
+  }
 
-  // const hero = data.pageBy.heroSection;
+  const hero = data.pageBy.heroSection;
 
   return (
     <main className="w-full h-full relative">
       <Navbar />
 
-      {/* <section id="home">
+      <section id="home">
         <Hero
         title={hero.heroTitle}
         tag={hero.mainTag}
         subtitle={hero.heroShortDescription}
         cta={hero.primaryButton}
         />
-      </section> */}
+      </section>
 
       <section id="clients">
         <ClientSection />
