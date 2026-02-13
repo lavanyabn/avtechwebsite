@@ -74,6 +74,10 @@ export default async function Home() {
         <FAQSection />
       </section>
 
+       <section id="contact">
+        <ContactUs />
+      </section>
+
      
     </main>
   );
