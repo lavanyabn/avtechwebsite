@@ -37,14 +37,14 @@ export default async function Home() {
     <main className="w-full h-full relative">
       <Navbar />
 
-      <section id="home">
+      {/* <section id="home">
         <Hero
         title={hero.heroTitle}
         tag={hero.mainTag}
         subtitle={hero.heroShortDescription}
         cta={hero.primaryButton}
         />
-      </section>
+      </section> */}
 
       <section id="clients">
         <ClientSection />
@@ -74,11 +74,6 @@ export default async function Home() {
         <FAQSection />
       </section>
 
-       <section id="contact">
-        <ContactUs />
-      </section>
-
-     
     </main>
   );
 }
