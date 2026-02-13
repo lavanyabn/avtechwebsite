@@ -1,5 +1,7 @@
 import React from "react";
 
+export default function ContactUs()
+{
   return (
     <section className="bg-linear-to-r from-[#2a0405] to-[#8a1c1f] py-16 px-6">
       <div className="max-w-6xl mx-auto">
@@ -23,6 +25,8 @@ import React from "react";
         </p>
       </div>
     </section>
+)
+    }
   );
 };
 
