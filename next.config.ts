@@ -6,8 +6,8 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: 'avtech.local',
+        protocol: 'https',
+        hostname: 'develop.avinyatechknows.com',
         port: '',
         pathname: '/wp-content/uploads/**',
       },
