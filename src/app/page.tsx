@@ -8,30 +8,30 @@ import MemberSection from '@/components/membersSection';
 import Navbar from '@/components/navBar';
 import SecondSection from '@/components/secondSection';
 import ThingsWeAreGoodAtSlider from '@/components/things';
-import { fetchGraphQL } from '@/lib/graphql';
+// import { fetchGraphQL } from '@/lib/graphql';
 
-const HOME_QUERY = `
-  query {
-    pageBy(uri: "home") {
-      heroSection {
-        mainTag
-        heroTitle
-        heroShortDescription
-        primaryButton
-      }
-    }
-  }
-`;
+// const HOME_QUERY = `
+//   query {
+//     pageBy(uri: "home") {
+//       heroSection {
+//         mainTag
+//         heroTitle
+//         heroShortDescription
+//         primaryButton
+//       }
+//     }
+//   }
+// `;
 
-export default async function Home() {
+export default function Home() {
 
-    const data = await fetchGraphQL(HOME_QUERY);
+  //   const data = await fetchGraphQL(HOME_QUERY);
 
-  if (!data?.pageBy?.heroSection) {
-    throw new Error('Home page data not found');
-  }
+  // if (!data?.pageBy?.heroSection) {
+  //   throw new Error('Home page data not found');
+  // }
 
-  const hero = data.pageBy.heroSection;
+  // const hero = data.pageBy.heroSection;
 
   return (
     <main className="w-full h-full relative">
