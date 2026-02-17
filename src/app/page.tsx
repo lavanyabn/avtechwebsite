@@ -1,3 +1,5 @@
+export cont dynamic = "force-dynamic";
+
 import ClientSection from '@/components/clientSection';
 import ContactUs from '@/components/contactSection';
 import CourseSection from '@/components/courseSection';
