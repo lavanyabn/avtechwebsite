@@ -1,4 +1,4 @@
-export cont dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 
 import ClientSection from '@/components/clientSection';
 import ContactUs from '@/components/contactSection';
