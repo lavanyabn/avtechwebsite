@@ -1,70 +1,48 @@
-'use client'
-
-import React, { useEffect, useMemo, useState } from 'react'
-import useEmblaCarousel from 'embla-carousel-react'
-import Autoplay from 'embla-carousel-autoplay'
-import Image from 'next/image'
-
-type PodImage = {
-  guid: string
-}
-
-export default function EmblaCarousel() {
-  const [logos, setLogos] = useState<PodImage[]>([])
-
-  const autoplay = useMemo(
-    () =>
-      Autoplay({
-        delay: 1800,
-        stopOnInteraction: false,
-        stopOnMouseEnter: true,
-      }),
-    []
-  )
-
-  const [emblaRef] = useEmblaCarousel(
-    {
-      loop: true,
-      align: 'start',
-      dragFree: true,
-    },
-    [autoplay]
-  )
-
-  useEffect(() => {
-    async function fetchLogos() {
-      
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_WP_LINK}/wp-json/wp/v2/pages/21`
-      )
-
-      const page = await res.json()
-
-      // 👇 THIS is the magic line
-      setLogos(page.clientslogo || [])
-    }
-
-    fetchLogos()
-  }, [])
-
+export default function SecondList() {
   return (
-    <div className="embla">
-      <div className="embla__viewport" ref={emblaRef}>
-        <div className="embla__container">
-          {logos.map((logo, index) => (
-            <div className="embla__slide" key={index}>
-              <div className="embla__slide__inner">
-                <Image
-                  src={logo.guid}
-                  alt="Client logo"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-            </div>
-          ))}
+    <section className="w-full bg-white py-16 px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+          {/* Column 1 */}
+          <div className="space-y-6">
+            <h2 className="text-xl font-semibold text-black">
+              Engineering the <br className="hidden md:block" />
+              Future Intelligence
+            </h2>
+            <p className="text-gray-700 leading-relaxed text-base ">
+              At Avinya Techknows, we harness AI, cloud, and full-stack
+              innovation to shape smarter, scalable, and future-ready digital
+              ecosystems. Our solutions evolve with your vision.
+            </p>
+          </div>
+
+          {/* Column 2 */}
+          <div className="space-y-6">
+            <h2 className="text-xl font-semibold text-black">
+              Technology That <br className="hidden md:block" />
+              Thinks Ahead
+            </h2>
+            <p className="text-gray-700 leading-relaxed text-base ">
+              We don’t just build technology — we engineer foresight. Our
+              intelligent solutions anticipate tomorrow’s challenges to empower
+              businesses today.
+            </p>
+          </div>
+
+          {/* Column 3 */}
+          <div className="space-y-6">
+            <h2 className="text-xl font-semibold text-black">
+              Reimagining Possibilities <br className="hidden md:block" />
+              with AI and Cloud
+            </h2>
+            <p className="text-gray-700 leading-relaxed text-base ">
+              From predictive analytics to scalable infrastructure, we help you
+              unlock new opportunities through seamless AI integration and
+              cloud-native architecture.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-  )
+    </section>
+  );
 }
