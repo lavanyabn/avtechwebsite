@@ -1,16 +1,17 @@
 export const dynamic = "force-dynamic";
 
-import ClientSection from '@/components/clientSection';
-import ContactUs from '@/components/contactSection';
-import CourseSection from '@/components/courseSection';
-import ExpertSection from '@/components/expertSection';
-import FAQSection from '@/components/FAQSection';
-import Hero from '@/components/heroSection';
-import MemberSection from '@/components/membersSection';
-import Navbar from '@/components/navBar';
-import SecondSection from '@/components/secondSection';
-import ThingsWeAreGoodAtSlider from '@/components/things';
-import { fetchGraphQL } from '@/lib/graphql';
+import ClientSection from "@/components/clientSection";
+import ContactUs from "@/components/contactSection";
+import CoreValues from "@/components/coreValues";
+import CourseSection from "@/components/courseSection";
+import ExpertSection from "@/components/expertSection";
+import FAQSection from "@/components/FAQSection";
+import Hero from "@/components/heroSection";
+import MemberSection from "@/components/membersSection";
+import Navbar from "@/components/navBar";
+import SecondSection from "@/components/secondSection";
+import ThingsWeAreGoodAtSlider from "@/components/things";
+import { fetchGraphQL } from "@/lib/graphql";
 
 const HOME_QUERY = `
   query {
@@ -26,11 +27,10 @@ const HOME_QUERY = `
 `;
 
 export default async function Home() {
-
-    const data = await fetchGraphQL(HOME_QUERY);
+  const data = await fetchGraphQL(HOME_QUERY);
 
   if (!data?.pageBy?.heroSection) {
-    throw new Error('Home page data not found');
+    throw new Error("Home page data not found");
   }
 
   const hero = data.pageBy.heroSection;
@@ -41,12 +41,14 @@ export default async function Home() {
 
       <section id="home">
         <Hero
-        title={hero.heroTitle}
-        tag={hero.mainTag}
-        subtitle={hero.heroShortDescription}
-        cta={hero.primaryButton}
+          title={hero.heroTitle}
+          tag={hero.mainTag}
+          subtitle={hero.heroShortDescription}
+          cta={hero.primaryButton}
         />
       </section>
+
+      <CoreValues />
 
       <section id="clients">
         <ClientSection />
@@ -60,11 +62,11 @@ export default async function Home() {
         <ThingsWeAreGoodAtSlider />
       </section>
 
-      <section id="services">
+      <section id="training">
         <ExpertSection />
       </section>
 
-      <section id="training">
+      <section id="services">
         <CourseSection />
       </section>
 
@@ -76,10 +78,9 @@ export default async function Home() {
         <FAQSection />
       </section>
 
-        <section id="contact">
+      <section id="contact">
         <ContactUs />
       </section>
-
     </main>
   );
 }

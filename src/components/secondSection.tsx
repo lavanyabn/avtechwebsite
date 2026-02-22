@@ -1,39 +1,58 @@
 import { fetchGraphQL } from "@/lib/graphql";
 import SecondList from "./secondList";
+import { json } from "stream/consumers";
 
 const SECOND_SECTION_QUERY = `
   query {
     pageBy(uri: "home") {
         secondSection {
-        secondTitle
+        secondHeading
         secondSubtitle
         }
     }
   }
 `;
 
-export default async function  SecondSection() {
+interface WordPressPageData {
+  second_title: string[];
+  second_content: string[];
+}
 
-      const data = await fetchGraphQL(SECOND_SECTION_QUERY);
-    
-      
-      if (!data?.pageBy?.secondSection) {
-          throw new Error('Second Section page data not found');
-        }
-        
-        const secondSection = data.pageBy.secondSection;
-        console.log("secondSection"+secondSection.secondTitle);
-    return (
-        <>
-        <div className="w-full h-full md:py-12 py-6 md:px-0 px-4 flex flex-col justify-center items-center">
-            <div className="md:w-2/3 w-full  md:h-[75vh] h-full  relative overflow-hidden flex bg-[url('/secondSection.png')] bg-cover bg-center bg-no-repeat  rounded-lg shadow-lg">
-                <div className="w-full h-full p-10 flex flex-col gap-3 justify-end items-start bg-black/50 text-white">
-                   <h2 className="text-left text-wrap md:w-1/2 w-full text-2xl">{secondSection.secondTitle}</h2>
-                    <p className="text-sm text-white/80">{secondSection.secondSubtitle}</p>        
-                </div>
-            </div>
-           <SecondList />
+export default async function SecondSection() {
+  const data = await fetchGraphQL(SECOND_SECTION_QUERY);
+
+  const res = await fetch(
+    "https://develop.avinyatechknows.com/wp-json/wp/v2/pages/21",
+    {
+      next: { revalidate: 60 }, // Optional: cache data for 60 seconds
+    },
+  );
+
+  if (!res.ok) return <div>Failed to load data</div>;
+
+  const pdata: WordPressPageData = await res.json();
+
+  if (!data?.pageBy?.secondSection) {
+    throw new Error("Second Section page data not found");
+  }
+
+  const secondSection = data.pageBy.secondSection;
+  console.log("secondSection" + secondSection.secondHeading);
+  return (
+    <>
+      <div className="w-full h-full md:py-12 py-6 md:px-0 px-4 flex flex-col justify-center items-center">
+        <div className="md:w-2/3 w-full  md:h-[75vh] h-full  relative overflow-hidden flex bg-[url('/secondSection.png')] bg-cover bg-center bg-no-repeat  rounded-lg shadow-lg">
+          <div className="w-full h-full p-10 flex flex-col gap-3 justify-end items-start bg-black/50 text-white">
+            <h2 className="text-left text-wrap md:w-1/2 w-full text-2xl">
+              {secondSection.secondHeading}
+            </h2>
+            <p className="text-sm text-white/80">
+              {secondSection.secondSubtitle}
+            </p>
+          </div>
         </div>
-        </>
-    );    
+        <SecondList data={pdata} />
+      </div>
+    </>
+  );
 }

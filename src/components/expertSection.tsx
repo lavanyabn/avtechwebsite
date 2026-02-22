@@ -1,4 +1,5 @@
 import { FaStarOfLife } from "react-icons/fa6";
+import { fetchGraphQL } from "@/lib/graphql";
 
 /* ---------------- TYPES ---------------- */
 
@@ -11,6 +12,16 @@ type ServiceItem = {
   name: string;
 };
 
+const SERVICE_QUERY = `
+  query {
+    pageBy(uri: "home") {
+           fourthSection {
+      fourthTitle
+    }
+    }
+  }
+`;
+
 /* ---------------- FETCH ---------------- */
 
 async function getServices(): Promise<ServiceItem[]> {
@@ -18,7 +29,7 @@ async function getServices(): Promise<ServiceItem[]> {
     `${process.env.NEXT_PUBLIC_WP_LINK}/wp-json/wp/v2/pages/21`,
     {
       next: { revalidate: 60 }, // ISR
-    }
+    },
   );
 
   if (!res.ok) {
@@ -29,7 +40,7 @@ async function getServices(): Promise<ServiceItem[]> {
 
   const titles = page.service_title ?? [];
 
-  console.log("titles" + titles)
+  console.log("titles" + titles);
 
   return titles.map((title) => ({
     name: title,
@@ -41,30 +52,32 @@ async function getServices(): Promise<ServiceItem[]> {
 export default async function ExpertSection() {
   const items = await getServices();
 
+  const data = await fetchGraphQL(SERVICE_QUERY);
+
+  const serviceSection = data.pageBy.fourthSection;
+  // console.log("Fourth" + serviceSection.fourthTitle);
+
   return (
     <div className="w-full min-h-screen py-6 flex flex-col justify-center items-center">
-      <div className="md:py-12 py-8">
-        <h2 className="text-center md:text-4xl text-xl font-semibold md:leading-14 leading-auto text-[#cfb070]">
-          Delivering Excellence Through <br className="md:block hidden" /> Deep
-          Technical Expertise
+      <div className="md:py-12 py-8 w-full flex justify-center items-center">
+        <h2 className="text-center md:text-4xl text-2xl md:w-1/2 w-full text-wrap font-semibold md:leading-14 leading-auto text-[#cfb070]">
+          {serviceSection.fourthTitle}
         </h2>
       </div>
 
       <div className="grid md:grid-cols-3 md:px-0 px-4 grid-cols-2 gap-6">
-        `{items.map((item, index) => (
+        {items.map((item, index) => (
           <div key={index} className="flex gap-3 cursor-pointer">
             <div className="flex gap-3 border rounded-md justify-center w-full hover:border-b border-[#8a1c1f20] ease-linear duration-500 items-center p-3">
               <FaStarOfLife className="text-[#8a1c1f]" />
               <span className="text-wrap">{item.name}</span>
             </div>
           </div>
-        ))}`
+        ))}
       </div>
     </div>
   );
 }
-
-
 
 // import { FaStarOfLife } from "react-icons/fa6";
 
