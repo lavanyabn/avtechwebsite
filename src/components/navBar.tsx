@@ -33,12 +33,12 @@ export default function Navbar() {
 
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <Image loading="lazy"  src="/Logo.png" alt="Logo" width={48} height={48} />
-          <div className="flex justify-center items-center leading-tight">
-            <span className={`md:text-xl text-base font-semibold text-[#cfb070]`}>
+          <Image loading="lazy"  src="/Logo.png" alt="Logo" width={68} height={68} />
+          <div className="flex justify-center gap-2 items-center leading-tight">
+            <span className={`md:text-2xl text-base font-semibold text-[#cfb070]`}>
               Avinya
             </span>
-            <span className="md:text-xl text-base font-bold text-[#cfb070]">
+            <span className="md:text-2xl text-base font-bold text-[#cfb070]">
               Techknows
             </span> 
           </div>
