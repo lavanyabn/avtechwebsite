@@ -25,7 +25,7 @@ export default function Navbar() {
   const textColor = scrolled ? "text-black" : "text-white";
   const navBg = scrolled
     ? "bg-white border-b border-neutral-200"
-    : "bg-black/20 backdrop-blur-md";
+    : "bg-transparent";
 
   return (
     <nav className={` relative w-full z-50 transition-all duration-300 ${navBg}`}>
