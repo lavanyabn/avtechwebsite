@@ -25,10 +25,10 @@ export default function Navbar() {
   const textColor = scrolled ? "text-black" : "text-white";
   const navBg = scrolled
     ? "bg-white border-b border-neutral-200"
-    : "bg-transparent";
+    : "bg-black/80";
 
   return (
-    <nav className={` relative w-full z-50 transition-all duration-300 ${navBg}`}>
+    <nav className={` fixed top-0 left-0 w-full z-50 transition-all duration-300 ${navBg}`}>
       <div className="flex justify-between items-center px-6 py-3">
 
         {/* Logo */}
