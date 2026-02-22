@@ -32,7 +32,7 @@ export default function Navbar() {
       <div className="flex justify-between items-center px-6 py-3">
 
         {/* Logo */}
-        <div className="flex items-center gap-3 absolute top-[10px] left-[22px]">
+        <div className="flex items-center gap-3">
           <Image loading="lazy"  src="/Logo.png" alt="Logo" width={68} height={68} />
           <div className="flex justify-center gap-2 items-center leading-tight">
             <span className={`md:text-2xl text-base font-semibold text-[#cfb070]`}>
