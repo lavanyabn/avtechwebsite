@@ -28,11 +28,11 @@ export default function Navbar() {
     : "bg-black/20 backdrop-blur-md";
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${navBg}`}>
+    <nav className={` relative w-full z-50 transition-all duration-300 ${navBg}`}>
       <div className="flex justify-between items-center px-6 py-3">
 
         {/* Logo */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 absolute top-[10px] left-[22px]">
           <Image loading="lazy"  src="/Logo.png" alt="Logo" width={68} height={68} />
           <div className="flex justify-center gap-2 items-center leading-tight">
             <span className={`md:text-2xl text-base font-semibold text-[#cfb070]`}>
