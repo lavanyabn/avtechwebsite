@@ -114,16 +114,7 @@ export default function Navbar() {
             </li>
             <li>
               <Link
-                href="/internship"
-                onClick={() => setOpen(false)}
-                className="text-black hover:text-[#cfb070]"
-              >
-                Internship
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/services"
+                href="#services"
                 onClick={() => setOpen(false)}
                 className="text-black hover:text-[#cfb070]"
               >
@@ -137,6 +128,15 @@ export default function Navbar() {
                 className="text-black hover:text-[#cfb070]"
               >
                 Training
+              </a>
+            </li>
+            <li>
+              <a
+                href="#members"
+                onClick={() => setOpen(false)}
+                className="text-black hover:text-[#cfb070]"
+              >
+                Members
               </a>
             </li>
             <li>
