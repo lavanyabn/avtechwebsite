@@ -60,7 +60,7 @@ export default async function ExpertSection() {
   return (
     <div className="w-full min-h-screen py-6 flex flex-col justify-center items-center">
       <div className="md:py-12 py-8 w-full flex justify-center items-center">
-        <h2 className="text-center md:text-4xl text-2xl md:w-1/2 w-full text-wrap font-semibold md:leading-14 leading-auto text-[#cfb070]">
+        <h2 className="text-center md:text-4xl md:px-0 px-4  text-2xl md:w-1/2 w-full text-wrap font-semibold md:leading-14 leading-auto text-[#cfb070]">
           {serviceSection.fourthTitle}
         </h2>
       </div>
