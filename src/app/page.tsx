@@ -36,7 +36,7 @@ export default async function Home() {
   const hero = data.pageBy.heroSection;
 
   return (
-    <main className="w-full h-full relative">
+    <main className="w-full h-full relative overflow-x-hidden">
       <Navbar />
 
       <section id="home">

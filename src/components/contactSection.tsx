@@ -7,7 +7,7 @@ export default function ContactUs() {
   return (
     <section className="bg-linear-to-r from-[#2a0405] to-[#8a1c1f] py-16 px-6">
       <div className="max-w-8xl mx-auto">
-        <div className="flex w-full justify-evenly items-center  text-gray-300 text-sm mt-16">
+        <div className="flex w-full md:justify-evenly justify-start md:gap-0 gap-4 items-center md:flex-nowrap flex-wrap  text-gray-300 text-sm mt-16">
           <div className="flex gap-3 justify-center items-start">
             <FaPhoneAlt className="text-xl text-white" />
             <div>

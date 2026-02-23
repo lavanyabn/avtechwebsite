@@ -14,7 +14,7 @@ export default function Hero({ title, tag, subtitle, cta }: HeroProps) {
       <section className={`${style.hero_section} md:h-screen h-[65vh]`}>
         <div className="text-white flex flex-col gap-3 justify-center items-center w-full h-full bg-black/50">
           {/* <span className={`${style.secondary} leading-2.5 tracking-wide font-medium text-xl`}>{tag}</span> */}
-          <h1 className="md:text-6xl text-4xl w-full leading-15.5 text-nowrap text-center nth-last-[1]:text-[#cfb070]">
+          <h1 className="md:text-6xl text-4xl md:px-0 px-4 w-full md:leading-15.5 md:text-nowrap text-wrap text-center nth-last-[1]:text-[#cfb070]">
             {title.split("Innovators").map((part, index) =>
               index === 0 ? (
                 <span key={index}>

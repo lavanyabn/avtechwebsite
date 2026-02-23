@@ -101,7 +101,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {open && (
-        <div className="md:hidden bg-white border-t border-neutral-200 px-6 py-6">
+        <div className="md:hidden bg-white border-t border-neutral-200 px-6 py-6 mt-8">
           <ul className="flex flex-col gap-6 text-lg font-medium">
             <li>
               <a
