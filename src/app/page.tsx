@@ -50,7 +50,7 @@ export default async function Home() {
 
       <CoreValues />
 
-      <section id="clients">
+      <section id="clients" className="hidden">
         <ClientSection />
       </section>
 
