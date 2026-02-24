@@ -9,7 +9,7 @@ export default function ContactUs() {
       <div className="max-w-8xl mx-auto">
         <div className="flex w-full md:justify-evenly justify-start md:gap-0 gap-4 items-center md:flex-nowrap flex-wrap  text-gray-300 text-sm mt-16">
           <div className="flex gap-3 justify-center items-start">
-            <FaPhoneAlt className="text-xl text-white" />
+            <FaPhoneAlt className="text-lg text-white" />
             <div>
               <p className="font-semibold text-white">Phone</p>
               <p>+91 98861 11656</p>
