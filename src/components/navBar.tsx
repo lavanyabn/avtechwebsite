@@ -43,11 +43,11 @@ export default function Navbar() {
           />
           <div className="flex justify-center gap-2 items-center leading-tight">
             <span
-              className={`md:text-4xl text-lg font-semibold text-[#cfb070]`}
+              className={`md:text-4xl text-xl font-semibold text-[#cfb070]`}
             >
               Avinya
             </span>
-            <span className="md:text-4xl text-lg font-bold text-[#cfb070]">
+            <span className="md:text-4xl text-xl font-bold text-[#cfb070]">
               Techknows
             </span>
           </div>
