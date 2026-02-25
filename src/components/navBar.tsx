@@ -43,11 +43,11 @@ export default function Navbar() {
           />
           <div className="flex justify-center gap-2 items-center leading-tight">
             <span
-              className={`md:text-4xl text-base font-semibold text-[#cfb070]`}
+              className={`md:text-4xl text-lg font-semibold text-[#cfb070]`}
             >
               Avinya
             </span>
-            <span className="md:text-4xl text-base font-bold text-[#cfb070]">
+            <span className="md:text-4xl text-lg font-bold text-[#cfb070]">
               Techknows
             </span>
           </div>
@@ -101,7 +101,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {open && (
-        <div className="md:hidden bg-white border-t border-neutral-200 px-6 py-6 mt-8">
+        <div className="md:hidden bg-white border-t border-neutral-200 px-6 py-6 mt-10">
           <ul className="flex flex-col gap-6 text-lg font-medium">
             <li>
               <a
