@@ -1,48 +1,54 @@
 import FeaturedCard from "./featuredCard";
 
-type WPPageResponse = {
-  id: number;
-  training_titles?: string[]; // 👈 PODS exposes it at root
-  training_message?: string[]; // 👈 PODS exposes it at root
-};
-
-type ServiceItem = {
-  name: string;
-  description: string;
-};
-
-async function getServices(): Promise<ServiceItem[]> {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_WP_LINK}/wp-json/wp/v2/pages/21`,
-    {
-      next: { revalidate: 60 }, // ISR
-    },
-  );
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch services");
-  }
-
-  const page: WPPageResponse = await res.json();
-
-  const titles = page.training_titles ?? [];
-  const descriptions = page.training_message ?? [];
-
-  console.log(titles);
-  console.log(descriptions);
-
-  // safer mapping (prevents mismatch issues)
-  const length = Math.min(titles.length, descriptions.length);
-
-  return Array.from({ length }, (_, index) => ({
-    name: titles[index],
-    description: descriptions[index],
-  }));
-}
+const items = [
+  {
+    title: "Value Added Course",
+    context:
+      "Industry-focused value added courses enhancing technical knowledge, practical exposure, and career readiness.",
+  },
+  {
+    title: "Skill Development",
+    context:
+      "Skill development programs strengthening communication, problem-solving, teamwork, and workplace readiness.",
+  },
+  {
+    title: "Industry Talk",
+    context:
+      "Industry expert talks sharing insights, trends, challenges, and real-world career guidance.",
+  },
+  {
+    title: "Curriculum Oriented Program",
+    context:
+      "Curriculum-aligned programs integrating academic concepts with practical applications and assessments.",
+  },
+  {
+    title: "Technical Training",
+    context:
+      "Hands-on technical training in emerging technologies delivered by experienced industry professionals.",
+  },
+  {
+    title: "Placement / Corporate Training",
+    context:
+      "Soft skill development, company-oriented training, aptitude, verbal and technical preparation, and problem-solving skills using platforms like LeetCode and HackerRank.",
+  },
+  {
+    title: "Internships",
+    context:
+      "Structured internships providing industry exposure, mentorship, project experience, and professional growth.",
+  },
+  {
+    title: "Hackathon",
+    context:
+      "Collaborative hackathons promoting innovation, creativity, teamwork, and real-time problem-solving.",
+  },
+  {
+    title: "Mini OS Development",
+    context:
+      "Structured mini OS training offering kernel development, mentorship, projects, and system-level programming exposure.",
+  },
+];
 
 export default async function CourseSection() {
-  const items = await getServices();
-
   return (
     <section className="w-full h-full py-12 flex flex-col gap-6 justify-center items-center">
       <FeaturedCard />
@@ -55,10 +61,10 @@ export default async function CourseSection() {
             {items.map((item, index) => (
               <div key={index}>
                 <h3 className="text-[#d19a3a] font-semibold mb-2">
-                  {item.name}
+                  {item.title}
                 </h3>
 
-                <p className="text-sm text-gray-700">{item.description}</p>
+                <p className="text-sm text-gray-700">{item.context}</p>
               </div>
             ))}
           </div>

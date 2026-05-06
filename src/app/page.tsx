@@ -26,6 +26,14 @@ const HOME_QUERY = `
   }
 `;
 
+const heroContent = {
+  tag: "Avinya Techknows",
+  title: "Shaping Future Innovators with Industry Demand Skills",
+  description:
+    "Transform your career with future-ready programs in technology and innovation.",
+  cta: "Contact us",
+};
+
 export default async function Home() {
   const data = await fetchGraphQL(HOME_QUERY);
 
@@ -41,10 +49,10 @@ export default async function Home() {
 
       <section id="home">
         <Hero
-          title={hero.heroTitle}
-          tag={hero.mainTag}
-          subtitle={hero.heroShortDescription}
-          cta={hero.primaryButton}
+          title={heroContent.title}
+          tag={heroContent.tag}
+          subtitle={heroContent.description}
+          cta={heroContent.cta}
         />
       </section>
 

@@ -1,49 +1,42 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 
 type ServiceItem = {
-  name: string;
-  description: string;
+  id: number;
+  title: string;
+  content: string;
   image: string;
 };
 
+// ✅ Static data (manually controlled)
+const items: ServiceItem[] = [
+  {
+    id: 1,
+    title: "Industry–Academia Bridge",
+    content:
+      "We bridge the gap between academic learning and real-world industry requirements by delivering practical, application-driven knowledge that prepares learners and organizations for today’s technology landscape.",
+    image: "/industry.png",
+  },
+  {
+    id: 2,
+    title: "Expert-Led Solutions",
+    content:
+      "Our team of seasoned educators and industry experts creates cutting-edge learning experiences for modern enterprises.",
+    image: "/expert.png",
+  },
+  {
+    id: 3,
+    title: "Innovation Focused",
+    content:
+      "We empower organizations through innovative tools, insights, and forward-thinking methodologies.",
+    image: "/development.png",
+  },
+];
+
 const ThingsWeAreGoodAtSlider = () => {
-  const [items, setItems] = useState<ServiceItem[]>([]);
-
-  // Fetch data on client
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_WP_LINK}/wp-json/wp/v2/pages/21`,
-        );
-
-        if (!res.ok) throw new Error("Failed to fetch services");
-
-        const page = await res.json();
-
-        const titles = page.slider_title ?? [];
-        const descriptions = page.slider_description ?? [];
-        const images = page.slider_image ?? [];
-
-        const mapped = titles.map((title: string, index: number) => ({
-          name: title,
-          description: descriptions[index] ?? "",
-          image: images[index]?.guid ?? "",
-        }));
-
-        setItems(mapped);
-      } catch (error) {
-        console.error("Slider fetch error:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
   // Autoplay plugin
   const autoplay = useMemo(
     () =>
@@ -51,6 +44,7 @@ const ThingsWeAreGoodAtSlider = () => {
         delay: 2500,
         stopOnInteraction: false,
         stopOnMouseEnter: true,
+        playOnInit: true,
       }),
     [],
   );
@@ -70,9 +64,9 @@ const ThingsWeAreGoodAtSlider = () => {
       <div className="overflow-hidden px-4 w-full" ref={emblaRef}>
         {/* Embla Container */}
         <div className="flex gap-6">
-          {items.map((slide, index) => (
+          {items.map((slide) => (
             <div
-              key={index}
+              key={slide.id}
               className="
                 flex-[0_0_auto]
                 relative
@@ -86,7 +80,7 @@ const ThingsWeAreGoodAtSlider = () => {
               {/* Background Image */}
               <img
                 src={slide.image}
-                alt={slide.name}
+                alt={slide.title}
                 className="absolute inset-0 w-full h-full object-cover"
               />
 
@@ -96,10 +90,10 @@ const ThingsWeAreGoodAtSlider = () => {
               {/* Text Content */}
               <div className="relative z-10 h-full flex flex-col justify-end p-6">
                 <h3 className="text-xl md:text-2xl font-semibold text-[#cfb070] mb-2">
-                  {slide.name}
+                  {slide.title}
                 </h3>
                 <p className="md:w-1/2 w-full text-sm md:text-base text-gray-200 leading-relaxed">
-                  {slide.description}
+                  {slide.content}
                 </p>
               </div>
             </div>
