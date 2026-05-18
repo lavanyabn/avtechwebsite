@@ -1,17 +1,17 @@
-'use client'
+"use client";
 
-import React, { useEffect, useMemo, useState } from 'react'
-import useEmblaCarousel from 'embla-carousel-react'
-import Autoplay from 'embla-carousel-autoplay'
-import Image from 'next/image'
+import React, { useEffect, useMemo, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+import Image from "next/image";
 
 type PodImage = {
-  ID: string
-  guid: string
-}
+  ID: string;
+  guid: string;
+};
 
 export default function EmblaCarousel() {
-  const [logos, setLogos] = useState<PodImage[]>([])
+  const [logos, setLogos] = useState<PodImage[]>([]);
 
   const autoplay = useMemo(
     () =>
@@ -20,44 +20,49 @@ export default function EmblaCarousel() {
         stopOnInteraction: false,
         stopOnMouseEnter: true,
       }),
-    []
-  )
+    [],
+  );
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: true,
-      align: 'start',
+      align: "start",
       dragFree: true,
     },
-    [autoplay]
-  )
+    [autoplay],
+  );
 
   // Start autoplay only if emblaApi exists
   useEffect(() => {
-    if (emblaApi) autoplay.play()
-  }, [emblaApi, autoplay])
+    if (emblaApi) autoplay.play();
+  }, [emblaApi, autoplay]);
 
   // Fetch logos safely
   useEffect(() => {
     async function fetchLogos() {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_WP_LINK}/wp-json/wp/v2/pages/21`)
-        const data = await res.json()
-        const logosData = Array.isArray(data.clientslogo) ? data.clientslogo : []
-        setLogos(logosData)
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_WP_LINK}/wp-json/wp/v2/pages/21`,
+        );
+        const data = await res.json();
+        const logosData = Array.isArray(data.clientslogo)
+          ? data.clientslogo
+          : [];
+        setLogos(logosData);
 
-        console.log(logosData)
+        console.log(logosData);
       } catch (err) {
-        console.error('Failed to fetch client logos', err)
+        console.error("Failed to fetch client logos", err);
+        // better
       }
     }
 
-    fetchLogos()
-  }, [])
+    fetchLogos();
+  }, []);
 
   // If logos is empty, render nothing or a placeholder
   if (!logos || logos.length === 0) {
-    return <p>Loading clients...</p>
+    return <p>Loading clients...</p>;
   }
 
   return (
@@ -79,5 +84,5 @@ export default function EmblaCarousel() {
         </div>
       </div>
     </div>
-  )
+  );
 }
