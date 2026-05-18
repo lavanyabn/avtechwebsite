@@ -67,15 +67,7 @@ const ThingsWeAreGoodAtSlider = () => {
           {items.map((slide) => (
             <div
               key={slide.id}
-              className="
-                flex-[0_0_auto]
-                relative
-                md:w-[65vw] w-[80vw]
-                md:h-[65vh] h-[45vh]
-                rounded-2xl
-                overflow-hidden
-                mr-4
-              "
+              className="flex-[0_0_auto] relative md:w-[65vw] w-[80vw] md:h-[65vh] h-[45vh] rounded-2xl overflow-hidden mr-4"
             >
               {/* Background Image */}
               <img
