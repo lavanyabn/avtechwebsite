@@ -1,8 +1,3 @@
-interface WordPressPageData {
-  second_title: string[];
-  second_content: string[];
-}
-
 // export default function SecondList({ data }: { data: WordPressPageData }) {
 //   const titles = data?.second_title || [];
 //   const contents = data?.second_content || [];

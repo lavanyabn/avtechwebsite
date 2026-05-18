@@ -1,44 +1,6 @@
-import { fetchGraphQL } from "@/lib/graphql";
 import SecondList from "./secondList";
-import { json } from "stream/consumers";
-
-const SECOND_SECTION_QUERY = `
-  query {
-    pageBy(uri: "home") {
-        secondSection {
-        secondHeading
-        secondSubtitle
-        }
-    }
-  }
-`;
-
-interface WordPressPageData {
-  second_title: string[];
-  second_content: string[];
-}
 
 export default async function SecondSection() {
-  const data = await fetchGraphQL(SECOND_SECTION_QUERY);
-
-  const res = await fetch(
-    "https://develop.avinyatechknows.com/wp-json/wp/v2/pages/21",
-    {
-      next: { revalidate: 60 }, // Optional: cache data for 60 seconds
-    },
-  );
-
-  if (!res.ok) return <div>Failed to load data</div>;
-
-  const pdata: WordPressPageData = await res.json();
-
-  if (!data?.pageBy?.secondSection) {
-    throw new Error("Second Section page data not found");
-  }
-
-  const secondSection = data.pageBy.secondSection;
-  console.log("secondSection" + secondSection.secondHeading);
-
   const secContent = {
     heading: "DevOps & Cloud Engineering",
     subtitle:

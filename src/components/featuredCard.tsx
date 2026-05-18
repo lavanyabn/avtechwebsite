@@ -1,30 +1,6 @@
 import Image from "next/image";
-import { fetchGraphQL } from "@/lib/graphql";
-
-const FEATURED_QUERY = `
-  query {
-    pageBy(uri: "home") {
-         trainingSection {
-            trainingHeader
-            trainingContent
-            trainingMedia {
-                node {
-                    sourceUrl
-                }
-            }
-        }
-    }
-  }
-`;
 
 export default async function FeaturedCard() {
-  const data = await fetchGraphQL(FEATURED_QUERY);
-
-  const section = data.pageBy.trainingSection;
-
-  const imageUrl = section?.trainingMedia?.node?.sourceUrl;
-  const altText = section?.trainingMedia?.node?.altText || "Training image";
-
   return (
     <>
       {/* <div className="w-full py-4 flex justify-center items-center">
@@ -36,7 +12,7 @@ export default async function FeaturedCard() {
             src="/thirdSection.png"
             width={500}
             height={500}
-            alt={altText}
+            alt="Training"
             className="object-cover"
           />
         </div>

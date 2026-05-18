@@ -33,7 +33,7 @@ export default function Navbar() {
     >
       <div className="flex relative justify-end items-center px-6 py-3">
         {/* Logo */}
-        <div className="flex absolute top-[22px] left-[44px] items-center gap-3">
+        <div className="flex absolute top-5.5 left-11 items-center gap-3">
           <Image
             loading="lazy"
             src="/Logonew.png"

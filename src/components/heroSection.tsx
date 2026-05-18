@@ -1,5 +1,4 @@
 import style from "@/styles/hero.module.css";
-import ActionBtn from "./actionBtn";
 
 type HeroProps = {
   tag: string;
@@ -8,7 +7,7 @@ type HeroProps = {
   cta: string;
 };
 
-export default function Hero({ title, tag, subtitle, cta }: HeroProps) {
+export default function Hero({ title, subtitle }: HeroProps) {
   return (
     <>
       <section className={`${style.hero_section} md:h-screen h-[65vh]`}>
